@@ -272,7 +272,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "cf-release deploy-cf-and-diego-to-cf-release job on Concourse failed! \n Check: https://buildpacks.ci.cf-app.com/pipelines/cf-release/jobs/deploy-cf-and-diego-to-cf-release"
+            text: "cf-release deploy-cf-and-diego-to-diego-cf-release job on Concourse failed! \n Check: {{concourse-url}}/pipelines/cf-release/jobs/deploy-cf-and-diego-to-diego-cf-release"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -330,7 +330,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "cf-release dats job on Concourse failed! \n Check: https://buildpacks.ci.cf-app.com/pipelines/cf-release/jobs/dats"
+            text: "cf-release dats job on Concourse failed! \n Check: {{concourse-url}}/pipelines/cf-release/jobs/dats"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -410,7 +410,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "<%= language %>-buildpack bosh-release job on Concourse failed! \n Check: https://buildpacks.ci.cf-app.com/pipelines/<%= language %>-buildpack/jobs/bosh-release"
+            text: "<%= language %>-buildpack bosh-release job on Concourse failed! \n Check: {{concourse-url}}/pipelines/<%= language %>-buildpack/jobs/bosh-release"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -470,7 +470,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "cf-release ship-it job on Concourse failed! \n Check: https://buildpacks.ci.cf-app.com/pipelines/cf-release/jobs/ship-it"
+            text: "cf-release ship-it job on Concourse failed! \n Check: {{concourse-url}}/pipelines/cf-release/jobs/ship-it"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
