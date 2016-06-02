@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+#raise '`brew install lastpass-cli` is required' if `which lpass` == ''
+
+def header(msg)
+  print '*' * 10
+  puts " #{msg}"
+end
+
+# def set_pipeline(name:, cmd:, load: [])
+#   puts system(%{bash -c "fly -t buildpacks set-pipeline \
+#     -p #{name} \
+#     -c <(#{cmd}) \
+#     -l <(lpass show 'Shared-Buildpacks/concourse-private.yml' --notes && lpass show 'Shared-Buildpacks/deployments-buildpacks.yml' --notes) \
+#     #{load.collect { |l| "-l #{l}" }.join(' ')}
+#   "})
+# end
+
+require 'yaml'
+
+flyrc  = YAML.load_file(File.expand_path('~/.flyrc'))
+target_name="concourse-cw"
+target = flyrc['targets'][target_name]
+concourse_url= target['api']
+
+domain_name="elpaaso.net"
+
+def set_pipeline(target_name:,name:, cmd:, load: [])
+  puts system(%{bash -c "fly -t #{target_name} set-pipeline \
+    -p buildpack-#{name} \
+    -c <(#{cmd}) \
+    -l concourse-private.yml \
+    #{load.collect { |l| "-l #{l}" }.join(' ')}
+  "})
+end
+
+
+
+header('For bosh-lite pipelines')
+Dir['config/bosh-lite/*.yml'].each do |filename|
+  deployment_name = File.basename(filename, '.yml')
+  full_deployment_name = YAML.load_file(filename)['deployment-name']
+  matches = /(lts|edge)\-\d+/.match(deployment_name)
+  puts deployment_name
+  if matches.nil?
+    puts 'Your config/bosh-lite/*.yml files must be named in the following manner: edge-1.yml, edge-2.yml, lts-1.yml, lts-2.yml, etc.'
+    exit 1
+  end
+  cf_version_type = matches[1]
+  puts "   #{deployment_name} bosh-lite"
+  set_pipeline(
+    target_name: target_name,
+    name: deployment_name,
+    cmd: "erb deployment_name=#{deployment_name} full_deployment_name=#{full_deployment_name} domain_name=#{domain_name} concourse_url=#{concourse_url} pipelines/templates/bosh-lite-cf-#{cf_version_type}.yml",
+    load: [filename]
+  )
+end
+
+puts 'Thanks, JT'
