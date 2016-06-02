@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+def header(msg)
+  print '*' * 10
+  puts " #{msg}"
+end
+
+def set_pipeline(name:, cmd:, load: [])
+  # puts system(%{bash -c "fly -t buildpacks set-pipeline \
+  puts system(%{bash -c "fly -t concourse-cw set-pipeline \
+    -p buildpack-#{name} \
+    -c <(#{cmd}) \
+    -l concourse-private.yml
+  "})
+end
+
+header('For standard pipelines')
+Dir['pipelines/*.yml'].each do |filename|
+  name = File.basename(filename, '.yml')
+  puts "   #{name} pipeline"
+  set_pipeline(name: name, cmd: "erb #{filename}")
+end
+
+puts 'Thanks, JT'
