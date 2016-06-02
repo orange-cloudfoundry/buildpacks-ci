@@ -23,7 +23,9 @@ RUN apt-get -y install \
 
 RUN curl -sSL https://get.docker.com/ | sh
 
+#TODO git user email should be configurable
 RUN git config --global user.email "cf-buildpacks-eng@pivotal.io"
+#TODO git user name should be configurable
 RUN git config --global user.name "CF Buildpacks Team CI Server"
 RUN git config --global core.pager cat
 
@@ -57,5 +59,6 @@ COPY build/*.sh /etc/profile.d/
 RUN gem install bosh_cli bosh_cli_plugin_micro rake bundler
 
 #install fly-cli
+#TODO fly download url should be configurable
 RUN curl "https://buildpacks.ci.cf-app.com/api/v1/cli?arch=amd64&platform=linux" -sfL -o /usr/local/bin/fly
 RUN chmod +x /usr/local/bin/fly

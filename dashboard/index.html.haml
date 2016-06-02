@@ -1,5 +1,6 @@
 - buildpacks = %w[go nodejs php python ruby staticfile binary]
 - buildpack_height = 100.0 / buildpacks.length
+-#TODO concourse URL should be configurable
 - def pipeline_url thing ; "https://buildpacks.ci.cf-app.com/pipelines/#{thing}" ; end
 - p66 = 200/3.0
 - p33 = 100/3.0
