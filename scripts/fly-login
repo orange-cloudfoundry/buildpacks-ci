@@ -2,4 +2,5 @@
 # ./fly-login username password
 
 set +x
+#TODO concourse URL should be configurable
 fly -t buildpacks login -c https://buildpacks.ci.cf-app.com -u $1 -p $2
