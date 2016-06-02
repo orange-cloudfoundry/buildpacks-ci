@@ -35,6 +35,7 @@ describe 'When a concourse job finishes' do
         expect(client.story_id).to eq '1234567'
 
         stub = stub_request(:post, 'https://www.pivotaltracker.com/services/v5/projects/987654/stories/1234567/comments')
+          #TODO concourse URL should be configurable
                .with(body: { text: 'Concourse pipeline passed: https://buildpacks.ci.cf-app.com/builds/some_build_id' })
                .with(headers: { 'X-TrackerToken' => '3695', 'Content-Type' => 'application/json' })
 
