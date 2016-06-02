@@ -58,7 +58,7 @@ Dir['config/buildpack/*.yml'].each do |filename|
   set_pipeline(
     target_name: target_name,
     name: "#{language}-buildpack",
-    cmd: "erb language=#{language} concourse_url=#{concourse_url} pipelines/templates/buildpack.yml",
+    cmd: "erb language=#{language} pipelines/templates/buildpack.yml",
     load: [filename]
   )
 end
