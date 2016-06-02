@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+# encoding: utf-8
+
+raise '`brew install lastpass-cli` is required' if `which lpass` == ''
+
+def header(msg)
+  print '*' * 10
+  puts " #{msg}"
+end
+
+def set_pipeline(name:, cmd:, load: [])
+  puts system(%{bash -c "fly -t buildpacks set-pipeline \
+    -p #{name} \
+    -c <(#{cmd}) \
+    -l <(lpass show 'Shared-Buildpacks/concourse-private.yml' --notes && lpass show 'Shared-Buildpacks/deployments-buildpacks.yml' --notes) \
+    #{load.collect { |l| "-l #{l}" }.join(' ')}
+  "})
+end
+
+header('For buildpack pull request pipelines')
+Dir['config/buildpack/*.yml'].each do |filename|
+  language = File.basename(filename, '.yml')
+  puts "   #{language} pull-request"
+  set_pipeline(
+    name: "#{language}-pull-request",
+    cmd: "erb language=#{language} pipelines/templates/pull-request.yml"
+  )
+end
+
+puts 'Thanks, JT'
