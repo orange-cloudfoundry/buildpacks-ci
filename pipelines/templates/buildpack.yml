@@ -139,7 +139,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "<%= language %>-buildpack detect-new-version-and-upload-artifacts job on Concourse failed! \n Check: https://buildpacks.ci.cf-app.com/pipelines/<%= language %>-buildpack/jobs/detect-new-version-and-upload-artifacts"
+            text: "<%= language %>-buildpack detect-new-version-and-upload-artifacts job on Concourse failed! \n Check: {{concourse-url}}/pipelines/<%= language %>-buildpack/jobs/detect-new-version-and-upload-artifacts"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -180,7 +180,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "<%= language %>-buildpack specs-edge-master job on Concourse failed! \n Check: https://buildpacks.ci.cf-app.com/pipelines/<%= language %>-buildpack/jobs/specs-edge-master"
+            text: "<%= language %>-buildpack specs-edge-master job on Concourse failed! \n Check: {{concourse-url}}/pipelines/<%= language %>-buildpack/jobs/specs-edge-master"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -220,7 +220,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "<%= language %>-buildpack specs-lts-master job on Concourse failed! \n Check: https://buildpacks.ci.cf-app.com/pipelines/<%= language %>-buildpack/jobs/specs-lts-master"
+            text: "<%= language %>-buildpack specs-lts-master job on Concourse failed! \n Check: {{concourse-url}}/pipelines/<%= language %>-buildpack/jobs/specs-lts-master"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
