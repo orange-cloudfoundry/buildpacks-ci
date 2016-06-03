@@ -282,7 +282,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "stacks build-rootfs job on Concourse failed! \n Check: {{concourse-url}}/pipelines/stacks/jobs/build-rootfs"
+            text: "stacks build-rootfs job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/stacks/jobs/build-rootfs"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -569,7 +569,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "stacks dats job on Concourse failed! \n Check: {{concourse-url}}/pipelines/stacks/jobs/dats"
+            text: "stacks dats job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/stacks/jobs/dats"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -638,7 +638,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "stacks shipit job on Concourse failed! \n Check: {{concourse-url}}/pipelines/stacks/jobs/shipit"
+            text: "stacks shipit job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/stacks/jobs/shipit"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -676,7 +676,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "stacks upload-to-github job on Concourse failed! \n Check: {{concourse-url}}/pipelines/stacks/jobs/upload-to-github"
+            text: "stacks upload-to-github job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/stacks/jobs/upload-to-github"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -716,7 +716,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "stacks upload-to-docker job on Concourse failed! \n Check: {{concourse-url}}/pipelines/stacks/jobs/upload-to-docker"
+            text: "stacks upload-to-docker job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/stacks/jobs/upload-to-docker"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -749,7 +749,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "stacks create-bosh-release job on Concourse failed! \n Check: {{concourse-url}}/pipelines/stacks/jobs/create-bosh-release"
+            text: "stacks create-bosh-release job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/stacks/jobs/create-bosh-release"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -818,7 +818,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "stacks create-cflinuxfs2-rootfs-release job on Concourse failed! \n Check: {{concourse-url}}/pipelines/stacks/jobs/create-cflinuxfs2-rootfs-release"
+            text: "stacks create-cflinuxfs2-rootfs-release job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/stacks/jobs/create-cflinuxfs2-rootfs-release"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -871,7 +871,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "stacks upload-to-cf-release job on Concourse failed! \n Check: {{concourse-url}}/pipelines/stacks/jobs/upload-to-cf-release"
+            text: "stacks upload-to-cf-release job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/stacks/jobs/upload-to-cf-release"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
