@@ -2,7 +2,7 @@ resources:
   - name: ci-master
     type: git
     source:
-      uri: git@github.com:cloudfoundry/buildpacks-ci
+      uri: {{buildpacks-ci-git-uri}}
       branch: master
       private_key: {{buildpacks-ci-private-key}}
   - name: ci-develop
