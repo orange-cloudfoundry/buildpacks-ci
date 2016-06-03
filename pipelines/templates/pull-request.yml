@@ -4,7 +4,7 @@ resources:
     source:
       access_token: {{buildpacks-github-token}}
       repo: cloudfoundry/<%= language %>-buildpack
-      base_url: {{concourse-url}}
+      base_url: <%= concourse_url%>
   - name: cf-edge-environments
     type: pool
     source:

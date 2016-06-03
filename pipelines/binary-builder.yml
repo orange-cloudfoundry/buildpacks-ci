@@ -172,7 +172,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "binary-builder binary-builder job on Concourse failed! \n Check: {{concourse-url}}/pipelines/binary-builder/jobs/binary-builder"
+            text: "binary-builder binary-builder job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/binary-builder/jobs/binary-builder"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -216,7 +216,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "binary-builder build-<%= runtime %> job on Concourse failed! \n Check: {{concourse-url}}/pipelines/binary-builder/jobs/build-<%= runtime %>"
+            text: "binary-builder build-<%= runtime %> job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/binary-builder/jobs/build-<%= runtime %>"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -508,7 +508,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "binary-builder build-composer job on Concourse failed! \n Check: {{concourse-url}}/pipelines/binary-builder/jobs/build-composer"
+            text: "binary-builder build-composer job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/binary-builder/jobs/build-composer"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -578,7 +578,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "update-composer-in-manifest job on Concourse failed! \n Check: {{concourse-url}}/pipelines/binary-builder/jobs/update-composer-in-manifest"
+            text: "update-composer-in-manifest job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/binary-builder/jobs/update-composer-in-manifest"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -619,7 +619,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "binary-builder build-godep job on Concourse failed! \n Check: {{concourse-url}}/pipelines/binary-builder/jobs/build-godep"
+            text: "binary-builder build-godep job on Concourse failed! \n Check: concourse-url-KOpipelines/binary-builder/jobs/build-godep"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -689,7 +689,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "update-godep-in-manifest job on Concourse failed! \n Check: {{concourse-url}}/pipelines/binary-builder/jobs/update-godep-in-manifest"
+            text: "update-godep-in-manifest job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/binary-builder/jobs/update-godep-in-manifest"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
