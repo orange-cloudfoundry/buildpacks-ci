@@ -177,18 +177,22 @@ jobs:
             file: buildpacks-ci/tasks/binary-builder.yml
             params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 1 }
             privileged: true
+            attempts: 5
           - task: rspec-2
             file: buildpacks-ci/tasks/binary-builder.yml
             params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 2 }
             privileged: true
+            attempts: 5
           - task: rspec-3
             file: buildpacks-ci/tasks/binary-builder.yml
             params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 3 }
             privileged: true
+            attempts: 5
           - task: rspec-4
             file: buildpacks-ci/tasks/binary-builder.yml
             params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 4 }
             privileged: true
+            attempts: 5
         on_failure:
           put: failure-alert
           params:
@@ -213,6 +217,7 @@ jobs:
           params:
             BINARY_NAME: <%= runtime %>
           privileged: true
+          attempts: 5
         - put: build-tar
           params:
             from: binary-builder-artifacts/build.tgz
