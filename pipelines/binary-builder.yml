@@ -217,6 +217,7 @@ jobs:
           params:
             BINARY_NAME: <%= runtime %>
           privileged: true
+          attempts: 5
         - put: build-tar
           params:
             from: binary-builder-artifacts/build.tgz
