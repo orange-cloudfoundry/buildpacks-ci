@@ -7,6 +7,7 @@ resources:
     type: git
     source:
       uri: {{buildpacks-ci-git-uri-public}}
+      branch:  {{buildpacks-ci-git-uri-public-branch}}
   - name: builds-out
     type: git
     source:
@@ -148,6 +149,10 @@ resource_types:
     type: docker-image
     source:
       repository: cfcommunity/slack-notification-resource
+  - name: concourse2tracker
+    type: docker-image
+    source:
+      repository: {{buildpacks-docker-repo}}
 
 jobs:
   - name: binary-builder
@@ -631,7 +636,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "binary-builder build-godep job on Concourse failed! \n Check: concourse-url-KOpipelines/binary-builder/jobs/build-godep"
+            text: "binary-builder build-godep job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/binary-builder/jobs/build-godep"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
