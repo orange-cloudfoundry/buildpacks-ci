@@ -89,7 +89,7 @@ resources:
     source:
       url: {{concourse-job-failure-notifications-slack-webhook}}
 
-resource-types:
+resource_types:
   - name: slack-notification
     type: docker-image
     source:
