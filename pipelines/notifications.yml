@@ -48,7 +48,7 @@ resources:
       from: cf-buildpacks-eng@pivotal.io
       to: ["cf-security@pivotal.io", "cf-buildpacks-eng@pivotal.io"]
 
-resource-types:
+resource_types:
   - name: slack-notification
     type: docker-image
     source:
