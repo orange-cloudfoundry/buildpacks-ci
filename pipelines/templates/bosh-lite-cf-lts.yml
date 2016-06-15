@@ -118,8 +118,9 @@ jobs:
             BOSH_LITE_SUBNET_ID: {{buildpacks_ci_bosh_lite_subnet_id}}
             BOSH_LITE_DISK_SIZE: 100
             BOSH_GATEWAY_USER: {{buildpacks_ci_bosh_gateway_user}}
-            BOSH_TARGET: <%= full_deployment_name + ".cf-app.com" %>
+            BOSH_TARGET: <%= full_deployment_name + domain_name %>
             BOSH_LITE_NAME: {{deployment-name}}
+            DOMAIN_NAME: {{domaine-name}}
           ensure:
             put: deployments-buildpacks
             params:
@@ -169,8 +170,9 @@ jobs:
             BOSH_LITE_SUBNET_ID: {{buildpacks_ci_bosh_lite_subnet_id}}
             BOSH_LITE_DISK_SIZE: 100
             BOSH_GATEWAY_USER: {{buildpacks_ci_bosh_gateway_user}}
-            BOSH_TARGET: <%= full_deployment_name + ".cf-app.com" %>
+            BOSH_TARGET: <%= full_deployment_name + domain_name %>
             BOSH_LITE_NAME: {{deployment-name}}
+            DOMAIN_NAME: {{domaine-name}}
           privileged: true
         - put: deployments-buildpacks
           params:
@@ -257,10 +259,11 @@ jobs:
         - task: configure-deployment
           file: buildpacks-ci/tasks/machete-configure-deployment.yml
           params:
-            BOSH_TARGET: <%= full_deployment_name + ".cf-app.com" %>
+            BOSH_TARGET: <%= full_deployment_name + domain_name %>
             DEPLOYMENT_NAME: {{deployment-name}}
             CI_CF_PASSWORD: {{ci-cf-password}}
             CI_CF_USERNAME: {{ci-cf-username}}
+            DOMAIN_NAME: {{domaine-name}}
         on_failure:
           put: resource-pools
           params:
