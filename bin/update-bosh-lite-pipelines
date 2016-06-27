@@ -40,6 +40,7 @@ end
 header('For bosh-lite pipelines')
 Dir['config/bosh-lite/*.yml'].each do |filename|
   deployment_name = File.basename(filename, '.yml')
+  full_deployment_name = YAML.load_file(filename)['deployment-name']
   matches = /(lts|edge)\-\d+/.match(deployment_name)
   puts deployment_name
   if matches.nil?
@@ -51,7 +52,7 @@ Dir['config/bosh-lite/*.yml'].each do |filename|
   set_pipeline(
     target_name: target_name,
     name: deployment_name,
-    cmd: "erb deployment_name=#{deployment_name} concourse_url=#{concourse_url} domain_name=#{domain_name} pipelines/templates/bosh-lite-cf-#{cf_version_type}.yml",
+    cmd: "erb deployment_name=#{deployment_name} full_deployment_name=#{full_deployment_name} domain_name=#{domain_name} concourse_url=#{concourse_url} pipelines/templates/bosh-lite-cf-#{cf_version_type}.yml",
     load: [filename]
   )
 end
