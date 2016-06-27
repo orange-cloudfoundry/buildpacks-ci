@@ -7,8 +7,9 @@ resources:
   - name: deployments-buildpacks
     type: git
     source:
-      uri: {{deployments-git-url}}
-      private_key: {{deployments-private-key}}
+      uri: {{deployments-git-uri}}
+#Orange-specific      private_key: {{deployments-private-key}}
+      skip_ssl_verification: {{deployments-skip-ssl-verification}} #Orange-specific
   - name: buildpack-packager
     type: git
     source:
