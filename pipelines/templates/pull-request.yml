@@ -20,7 +20,8 @@ resources:
     type: git
     source:
       uri: {{deployments-git-uri}}
-      private_key: {{deployments-private-key}}
+#Orange-specific      private_key: {{deployments-private-key}}
+      skip_ssl_verification: {{deployments-skip-ssl-verification}} #Orange-specific
 
 jobs:
   - name: <%= language %> pull request
