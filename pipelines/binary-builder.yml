@@ -180,22 +180,22 @@ jobs:
         - aggregate:
           - task: rspec-1
             file: buildpacks-ci/tasks/binary-builder.yml
-            params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 1 }
+            params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 1, RUBYGEM_MIRROR: {{rubygem-mirror}} }
             privileged: true
             attempts: 5
           - task: rspec-2
             file: buildpacks-ci/tasks/binary-builder.yml
-            params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 2 }
+            params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 2, RUBYGEM_MIRROR: {{rubygem-mirror}} }
             privileged: true
             attempts: 5
           - task: rspec-3
             file: buildpacks-ci/tasks/binary-builder.yml
-            params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 3 }
+            params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 3, RUBYGEM_MIRROR: {{rubygem-mirror}}  }
             privileged: true
             attempts: 5
           - task: rspec-4
             file: buildpacks-ci/tasks/binary-builder.yml
-            params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 4 }
+            params: { TOTAL_GROUPS: 4, CURRENT_GROUP: 4, RUBYGEM_MIRROR: {{rubygem-mirror}} }
             privileged: true
             attempts: 5
         on_failure:
