@@ -98,6 +98,7 @@ jobs:
         - aggregate:
           - get: buildpacks-ci
           - get: deployments-buildpacks
+            attempts: 3
           - get: resource-pools
             passed: [checkout-environment]
             trigger: true
@@ -130,6 +131,7 @@ jobs:
             params:
               repository: deployments-buildpacks-artifacts
               rebase: true
+            attempts: 3
         on_failure:
           put: resource-pools
           params:
@@ -144,6 +146,7 @@ jobs:
           - get: deployments-buildpacks
             passed: ['recreate-bosh-lite']
             trigger: true
+            attempts: 3
           - get: resource-pools
             passed: ['recreate-bosh-lite']
             trigger: true
@@ -181,6 +184,7 @@ jobs:
           params:
             repository: generate-manifest-artifacts
             rebase: true
+          attempts: 3
         on_failure:
           put: resource-pools
           params:
@@ -194,6 +198,7 @@ jobs:
           - get: deployments-buildpacks
             passed: ['generate-manifest']
             trigger: true
+            attempts: 3
           - get: resource-pools
             passed: ['generate-manifest']
             trigger: true
@@ -224,6 +229,7 @@ jobs:
           - get: deployments-buildpacks
             passed: ['deploy-cf']
             trigger: true
+            attempts: 3
           - get: resource-pools
             passed: ['deploy-cf']
             trigger: true
@@ -257,6 +263,7 @@ jobs:
           - get: deployments-buildpacks
             passed: ['deploy-diego']
             trigger: true
+            attempts: 3
           - get: resource-pools
             passed: ['deploy-diego']
             trigger: true
