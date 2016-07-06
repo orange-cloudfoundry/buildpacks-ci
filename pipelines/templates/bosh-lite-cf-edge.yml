@@ -198,9 +198,13 @@ jobs:
             passed: ['generate-manifest']
             trigger: true
           - get: bosh-lite
+            attempts: 3
           - get: buildpacks-ci
+            attempts: 3
           - get: bosh-stemcell
+            attempts: 3
           - get: cf-bosh-release
+            attempts: 3
         - put: cf-deployment
           params:
             manifest: {{cf-manifest-location}}
