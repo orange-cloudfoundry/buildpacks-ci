@@ -151,9 +151,13 @@ jobs:
             passed: ['recreate-bosh-lite']
             trigger: true
           - get: buildpacks-ci
+            attempts: 3
           - get: bosh-lite
+            attempts: 3
           - get: cf-bosh-release
+            attempts: 3
           - get: diego-bosh-release
+            attempts: 3
         - aggregate:
           - task: cf-release-checkout
             file: buildpacks-ci/tasks/checkout-cf-release.yml
