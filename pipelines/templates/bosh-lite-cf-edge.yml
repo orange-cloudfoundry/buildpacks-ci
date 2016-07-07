@@ -238,11 +238,17 @@ jobs:
             passed: ['deploy-cf']
             trigger: true
           - get: buildpacks-ci
+            attempts: 3
           - get: bosh-stemcell
+            attempts: 3
           - get: cflinuxfs2-rootfs-bosh-release
+            attempts: 3
           - get: diego-bosh-release
+            attempts: 3
           - get: garden-linux-bosh-release
+            attempts: 3
           - get: etcd-bosh-release
+            attempts: 3
         - put: diego-deployment
           params:
             manifest: {{diego-manifest-location}}
@@ -252,6 +258,7 @@ jobs:
               - diego-bosh-release/release.tgz
               - garden-linux-bosh-release/release.tgz
               - etcd-bosh-release/release.tgz
+          attempts: 3
         on_failure:
           put: resource-pools
           params:
