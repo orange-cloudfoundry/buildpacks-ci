@@ -40,7 +40,7 @@ class NewReleasesDetector
     )
     dependency_tags.each do |dependency, versions|
       tracker_story_title = "Build and/or Include new releases: #{dependency} #{versions.join(', ')}"
-      tracker_story_description = "We have #{versions.count} new releases for **#{dependency}**:\n**version #{versions.join(', ')}**\n See the google doc https://sites.google.com/a/pivotal.io/cloudfoundry-buildpacks/check-lists/adding-a-new-dependency-release-to-a-buildpack for info on building a new release binary and adding it to the buildpack manifest file."
+      tracker_story_description = "We have #{versions.count} new releases for **#{dependency}**:\n**version #{versions.join(', ')}**\n See the documentation at http://docs.cloudfoundry.org/buildpacks/new_dependency_releases.html for info on building a new release binary and adding it to the buildpack manifest file."
       tracker_story_tasks = BuildpackDependency.for(dependency).map do |buildpack|
         "Update #{dependency} in #{buildpack}-buildpack"
       end
@@ -87,20 +87,20 @@ class NewReleasesDetector
 
   def tags
     @get_tags_functions = {
-      bundler:   -> { Octokit.tags('bundler/bundler').map(&:name).grep(/^v/) },
-      composer:  -> { Octokit.tags('composer/composer').map(&:name) },
-      glide:     -> { Octokit.tags('Masterminds/glide').map(&:name) },
-      go:        -> { Octokit.tags('golang/go').map(&:name).grep(/^go/) },
-      godep:     -> { Octokit.tags('tools/godep').map(&:name).grep(/^v/) },
-      httpd:     -> { Octokit.tags('apache/httpd').map(&:name).grep(/^2\./) },
-      jruby:     -> { Octokit.tags('jruby/jruby').map(&:name).grep(/^(1|9)\./) },
-      maven:     -> { Octokit.tags('apache/maven').map(&:name).grep(/^maven/) },
-      nginx:     -> { Octokit.tags('nginx/nginx').map(&:name).grep(/^release/) },
-      nodejs:    -> { Octokit.tags('nodejs/node').map(&:name).grep(/^v/) },
-      openjdk:   -> { YAML.load(open('https://download.run.pivotal.io/openjdk/trusty/x86_64/index.yml').read).keys },
-      php:       -> { Octokit.tags('php/php-src').map(&:name).grep(/^php/) },
-      python:    -> { JSON.parse(open('https://hg.python.org/cpython/json-tags').read)['tags'].map { |t| t['tag'] } },
-      ruby:      -> { Octokit.tags('ruby/ruby').map(&:name).grep(/^v/) }
+      bundler:         -> { Octokit.tags('bundler/bundler').map(&:name).grep(/^v/) },
+      composer:        -> { Octokit.tags('composer/composer').map(&:name) },
+      glide:           -> { Octokit.tags('Masterminds/glide').map(&:name).grep(/^v/) },
+      go:              -> { Octokit.tags('golang/go').map(&:name).grep(/^go/) },
+      godep:           -> { Octokit.tags('tools/godep').map(&:name).grep(/^v/) },
+      httpd:           -> { Octokit.tags('apache/httpd').map(&:name).grep(/^2\./) },
+      jruby:           -> { Octokit.tags('jruby/jruby').map(&:name).grep(/^(1|9)\./) },
+      maven:           -> { Octokit.tags('apache/maven').map(&:name).grep(/^maven/) },
+      nginx:           -> { Octokit.tags('nginx/nginx').map(&:name).grep(/^release/) },
+      nodejs:          -> { Octokit.tags('nodejs/node').map(&:name).grep(/^v/) },
+      openjdk:         -> { YAML.load(open('https://download.run.pivotal.io/openjdk/trusty/x86_64/index.yml').read).keys },
+      php:             -> { Octokit.tags('php/php-src').map(&:name).grep(/^php/) },
+      python:          -> { JSON.parse(open('https://hg.python.org/cpython/json-tags').read)['tags'].map { |t| t['tag'] } },
+      ruby:            -> { Octokit.tags('ruby/ruby').map(&:name).grep(/^v/) }
     }
   end
 end

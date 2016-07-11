@@ -12,7 +12,6 @@ popd
 export BOSH_RELEASES_DIR=`pwd`
 export CF_RELEASE_DIR=`pwd`/cf-release
 
-set +x
 pushd cf-release
   mkdir -p bosh-lite
   echo "
@@ -48,7 +47,6 @@ jobs:
 
   ruby -i -pe "gsub('admin|admin', 'admin|' + ENV['CI_CF_PASSWORD'])" bosh-lite/deployments/cf.yml
 popd
-set -x
 
 pushd diego-release
   ./scripts/generate-bosh-lite-manifests

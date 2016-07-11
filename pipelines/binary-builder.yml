@@ -113,6 +113,15 @@ resources:
       ignore_paths:
         - VERSION
         - CHANGELOG
+  - name: staticfile-buildpack
+    type: git
+    source:
+      uri: git@github.com:cloudfoundry/staticfile-buildpack.git
+      private_key: {{staticfile-buildpack-private-key}}
+      branch: develop
+      ignore_paths:
+        - VERSION
+        - CHANGELOG
   - name: go-buildpack
     type: git
     source:
@@ -143,6 +152,13 @@ resources:
       branch: new-release-notifications
       private_key: {{buildpacks-ci-private-key}}
       paths: [ glide.yaml ]
+  - name: nginx-new-releases
+    type: git
+    source:
+      uri: {{buildpacks-ci-git-uri}}
+      branch: new-release-notifications
+      private_key: {{buildpacks-ci-private-key}}
+      paths: [ nginx.yaml ]
   - name: composer-new-releases
     type: git
     source:
@@ -491,21 +507,24 @@ jobs:
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
 <% end %>
-  - name: update-composer-in-manifest
+<% {go: ["godep", "glide"], staticfile: ["nginx"], php: ["nginx", "composer"]}.each do |buildpack, dependencies| %>
+  <% dependencies.each do |dependency| %>
+  - name: update-<%= dependency %>-in-<%= buildpack %>-buildpack
     serial: true
     plan:
       - do:
         - aggregate:
           - get: buildpacks-ci
           - get: buildpack
-            resource: php-buildpack
+            resource: <%= buildpack %>-buildpack
           - get: builds-out
-            passed: [ build-composer ]
+            passed: [ build-<%= dependency %> ]
             trigger: true
         - task: update-dependency-in-manifests
           file: buildpacks-ci/tasks/update-dependency-in-buildpack.yml
           params:
-            DEPENDENCY: composer
+            <%= "BUILDPACK_NAME: #{buildpack}" if dependency == "nginx" %>
+            DEPENDENCY: <%= dependency %>
         - put: cf-environments
           resource: cf-edge-environments
           params:
@@ -527,8 +546,11 @@ jobs:
                 COMPOSER_GITHUB_OAUTH_TOKEN: {{composer-github-oauth-token}}
                 CF_PASSWORD: {{ci-cf-password}}
                 CF_EDGE: 'true'
+                TRACKER_PROJECT_ID: {{cf-buildpacks-public-tracker-id}}
+                TRACKER_API_TOKEN: {{pivotal-tracker-api-token}}
+                TRACKER_REQUESTER_ID: {{cf-buildpacks-requester-id}}
             privileged: true
-          - put: php-buildpack
+          - put: <%= buildpack %>-buildpack
             params:
               repository: buildpack-artifacts
               rebase: true
@@ -539,26 +561,29 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "update-composer-in-manifest job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/binary-builder/jobs/update-composer-in-manifest"
+            text: "update-<%= dependency %>-in-<%= buildpack %>-buildpack job on Concourse failed! \n Check:  <%= concourse_url%>/pipelines/binary-builder/jobs/update-<%= dependency %>-in-<%= buildpack %>-buildpack"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
-<% %w(godep glide).each do |go_buildpack_dependency| %>
-  - name: update-<%= go_buildpack_dependency %>-in-manifest
+  <% end %>
+<% end %>
+<% %w(staticfile php).each do |buildpack| %>
+  - name: update-nginx-<%= buildpack %>-manifest
     serial: true
     plan:
       - do:
         - aggregate:
           - get: buildpacks-ci
           - get: buildpack
-            resource: go-buildpack
+            resource: <%= buildpack %>-buildpack
           - get: builds-out
-            passed: [ build-<%= go_buildpack_dependency %> ]
+            passed: [ build-nginx ]
             trigger: true
         - task: update-dependency-in-manifests
           file: buildpacks-ci/tasks/update-dependency-in-buildpack.yml
           params:
-            DEPENDENCY: <%= go_buildpack_dependency %>
+            DEPENDENCY: nginx
+            BUILDPACK_NAME: <%= buildpack %>
         - put: cf-environments
           resource: cf-edge-environments
           params:
@@ -581,18 +606,18 @@ jobs:
                 CF_PASSWORD: {{ci-cf-password}}
                 CF_EDGE: 'true'
             privileged: true
-          - put: go-buildpack
+          - put: <%= buildpack %>-buildpack
             params:
               repository: buildpack-artifacts
               rebase: true
-          ensure:
+            ensure:
             put: cf-edge-environments
             params:
               release: cf-environments
         on_failure:
           put: failure-alert
           params:
-            text: "update-<%= go_buildpack_dependency %>-in-manifest job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/binary-builder/jobs/update-<%= go_buildpack_dependency %>-in-manifest"
+            text: "update-composer-in-manifest job on Concourse failed! \n Check:  <%= concourse_url%>/pipelines/binary-builder/jobs/update-composer-in-manifest"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
