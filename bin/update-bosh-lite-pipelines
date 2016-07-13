@@ -30,6 +30,7 @@ def set_pipeline(target_name:,name:, cmd:, load: [])
   puts system(%{bash -c "fly -t #{target_name} set-pipeline \
     -p buildpack-#{name} \
     -c <(#{cmd}) \
+    -l public-credentials.yml \
     -l concourse-private.yml \
     #{load.collect { |l| "-l #{l}" }.join(' ')}
   "})
