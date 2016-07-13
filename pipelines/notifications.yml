@@ -1,4 +1,10 @@
 ---
+resource_types:
+- name: email-sender
+  type: docker-image
+  source:
+    repository: pcfseceng/email-resource
+
 resources:
   - name: monday-funday
     type: cron
@@ -39,7 +45,7 @@ resources:
       uri: https://github.com/cloudfoundry/stacks
       branch: master
   - name: cves-email
-    type: email
+    type: email-sender
     source:
       smtp:
         host: email-smtp.us-east-1.amazonaws.com
@@ -110,9 +116,8 @@ jobs:
           run:
             path: bash
             args:
-              - '-cl'
-              - |
-                "buildpacks-ci/scripts/notifications/pivotal_tracker 'Pull latest changes from upstream' 'Check that there are no upstream changes that we are missing. Consult the documentation at http://docs.cloudfoundry.org/buildpacks/merging_upstream.html for more details.' 'Go' 'Nodejs' 'Python' 'Ruby'"
+              - '-c'
+              - "buildpacks-ci/scripts/notifications/pivotal_tracker 'Pull latest changes from upstream' 'Check that there are no upstream changes that we are missing. Consult the documentation at http://docs.cloudfoundry.org/buildpacks/merging_upstream.html for more details.' 'Go' 'Nodejs' 'Python' 'Ruby'"
           params:
             TRACKER_PROJECT_ID: {{cf-buildpacks-public-tracker-id}}
             TRACKER_API_TOKEN: {{pivotal-tracker-api-token}}
