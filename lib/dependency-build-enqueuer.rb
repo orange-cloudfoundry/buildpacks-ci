@@ -32,19 +32,25 @@ class DependencyBuildEnqueuer
       new_dependency_versions = [latest_version]
     end
 
-    versions_to_build = []
+    dependency_builds_file = File.join(binary_builds_dir, "#{dependency}-builds.yml")
+
     new_dependency_versions.each do |ver|
+      ver = massage_version(ver)
       new_build = {"version" => ver}
       dependency_verification_tuples = DependencyBuildEnqueuer.build_verifications_for(dependency, ver)
       dependency_verification_tuples.each do |dependency_verification_type, dependency_verification_value|
         new_build[dependency_verification_type] = dependency_verification_value
       end
-      versions_to_build.push new_build
-    end
 
-    dependency_builds_file = File.join(binary_builds_dir, "#{dependency}-builds.yml")
-    File.open(dependency_builds_file, "w") do |file|
-      file.write({dependency => versions_to_build}.to_yaml)
+      File.open(dependency_builds_file, "w") do |file|
+        file.write({dependency => [new_build]}.to_yaml)
+      end
+
+      Dir.chdir(binary_builds_dir) do
+        puts `git add #{dependency_builds_file}`
+        commit_msg = "Enqueue #{dependency} - #{ver}"
+        puts `git commit -m '#{commit_msg}'`
+      end
     end
   end
 
@@ -79,11 +85,20 @@ class DependencyBuildEnqueuer
 
   private
 
+  def massage_version(version)
+    case dependency
+    when "node"
+      version.gsub("v","")
+    else
+      version
+    end
+  end
+
   def self.build_verifications_for(dependency, version)
     verifications = []
     case dependency
     when "node"
-      download_url = "https://github.com/nodejs/node/archive/#{version}.tar.gz"
+      download_url = "https://nodejs.org/dist/v#{version}/node-v#{version}.tar.gz"
       verifications << shasum_256_verification(download_url)
     when "godep"
       download_url = "https://github.com/tools/godep/archive/#{version}.tar.gz"

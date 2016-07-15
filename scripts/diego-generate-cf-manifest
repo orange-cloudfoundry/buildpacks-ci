@@ -21,7 +21,7 @@ properties:
   domain: $DEPLOYMENT_NAME.$DOMAIN_NAME
   system_domain: $DEPLOYMENT_NAME.$DOMAIN_NAME
   acceptance_tests:
-    admin_password: $CI_CF_PASSWORD
+    admin_password: stub_to_be_gsubbed
     include_internet_dependent: true
     include_logging: true
     include_operator: false
@@ -46,6 +46,7 @@ jobs:
   ./scripts/generate-bosh-lite-dev-manifest bosh-lite/cf-stub-spiff-ours.yml
 
   ruby -i -pe "gsub('admin|admin', 'admin|' + ENV['CI_CF_PASSWORD'])" bosh-lite/deployments/cf.yml
+  ruby -i -pe "gsub('admin_password: stub_to_be_gsubbed', 'admin_password: ' + ENV['CI_CF_PASSWORD'])" bosh-lite/deployments/cf.yml
 popd
 
 pushd diego-release

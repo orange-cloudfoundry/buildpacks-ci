@@ -281,7 +281,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "cf-release deploy-cf-and-diego-to-diego-cf-release job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/cf-release/jobs/deploy-cf-and-diego-to-diego-cf-release"
+            text: "cf-release deploy-cf-and-diego-to-cf-release job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/cf-release/jobs/deploy-cf-and-diego-to-cf-release"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
@@ -420,7 +420,7 @@ jobs:
         on_failure:
           put: failure-alert
           params:
-            text: "<%= language %>-buildpack bosh-release job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/<%= language %>-buildpack/jobs/bosh-release"
+            text: "<%= language %>-buildpack bosh-release job on Concourse failed! \n Check: <%= concourse_url%>/pipelines/cf-release/jobs/bosh-release"
             channel: {{concourse-job-failure-notifications-slack-channel}}
             username: concourse
             icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
