@@ -22,7 +22,7 @@ RUN apt-get -y install \
   zip
 
 RUN curl -sSL https://get.docker.com/ | sh
-
+ENV RUBYGEM_MIRROR https://gems.bmonkeys.net
 #TODO git user email should be configurable
 RUN git config --global user.email "cf-buildpacks-eng@pivotal.io"
 #TODO git user name should be configurable
@@ -32,6 +32,7 @@ RUN git config --global core.pager cat
 RUN wget -q https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb \
   && dpkg -i vagrant_1.8.1_x86_64.deb \
   && rm vagrant_1.8.1_x86_64.deb
+RUN bundle config mirror.https://rubygems.org ${RUBYGEM_MIRROR}
 RUN vagrant plugin install vagrant-aws
 RUN vagrant box add cloudfoundry/bosh-lite --provider aws
 

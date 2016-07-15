@@ -73,7 +73,10 @@ jobs:
       - task: notify
         config:
           platform: linux
-          image: docker:///cfbuildpacks/ci
+          image_resource:
+            type: docker-image
+            source:
+              repository: {{buildpacks-docker-ci-repo}}
           inputs:
             - name: new-releases
             - name: buildpacks-ci
@@ -110,7 +113,10 @@ jobs:
       - task: create latest upstream changes story
         config:
           platform: linux
-          image: docker:///cfbuildpacks/ci
+          image_resource:
+            type: docker-image
+            source:
+              repository: {{buildpacks-docker-ci-repo}}
           inputs:
             - name: buildpacks-ci
           run:
@@ -125,7 +131,10 @@ jobs:
       - task: create Open PRs story
         config:
           platform: linux
-          image: docker:///cfbuildpacks/ci
+          image_resource:
+            type: docker-image
+            source:
+              repository: {{buildpacks-docker-ci-repo}}
           inputs:
             - name: buildpacks-ci
           run:
@@ -145,7 +154,10 @@ jobs:
       - task: create Open Issues story
         config:
           platform: linux
-          image: docker:///cfbuildpacks/ci
+          image_resource:
+            type: docker-image
+            source:
+              repository: {{buildpacks-docker-ci-repo}}
           inputs:
             - name: buildpacks-ci
           run:
@@ -175,7 +187,10 @@ jobs:
       - task: notify
         config:
           platform: linux
-          image: docker:///cfbuildpacks/ci
+          image_resource:
+            type: docker-image
+            source:
+              repository: {{buildpacks-docker-ci-repo}}
           inputs:
             - name: new-cves
             - name: new-buildpack-cves
