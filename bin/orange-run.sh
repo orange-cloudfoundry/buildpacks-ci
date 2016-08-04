@@ -5,5 +5,6 @@ export LPASS_DEPLOYMENTS_BUILDPACKS_FILE=${LPASS_DEPLOYMENTS_BUILDPACKS_FILE:-"O
 export LPASS_REPOS_PRIVATE_KEYS_FILE=${LPASS_REPOS_PRIVATE_KEYS_FILE:-"OrangeShare-Buildpacks/buildpack-repos-private-keys.yml"}
 
 export PIPELINE_PREFIX=${PIPELINE_PREFIX:-"buildpack-"}
+export TARGET_NAME="concourse-cw"
 
 bin/update-all-the-pipelines
