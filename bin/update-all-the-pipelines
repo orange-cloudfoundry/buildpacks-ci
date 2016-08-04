@@ -63,7 +63,8 @@ def set_pipeline(target_name:,name:, cmd:, load: [])
     -c <(#{cmd}) \
     -l public-config.yml \
     -l <(lpass show #{LPASS_CONCOURSE_PRIVATE} --notes && lpass show #{LPASS_DEPLOYMENTS_BUILDPACKS} --notes && lpass show #{LPASS_REPOS_PRIVATE_KEYS} --notes) \
-    #{load.collect { |l| "-l #{l}" }.join(' ')}
+    #{load.collect { |l| "-l #{l}" }.join(' ')} \
+    -l concourse-private.yml
   "})
 end
 
