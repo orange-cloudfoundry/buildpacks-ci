@@ -61,7 +61,8 @@ resources:
     type: git
     source:
       uri: {{deployments-git-uri}}
-      private_key: {{deployments-private-key}}
+#Orange-specific      private_key: {{deployments-private-key}}
+      skip_ssl_verification: {{deployments-skip-ssl-verification}} #Orange-specific
       branch: master
   - name: stacks-cf-deployment
     type: bosh-deployment
