@@ -7,4 +7,4 @@ export LPASS_REPOS_PRIVATE_KEYS_FILE=${LPASS_REPOS_PRIVATE_KEYS_FILE:-"OrangeSha
 export PIPELINE_PREFIX=${PIPELINE_PREFIX:-"buildpack-"}
 export TARGET_NAME="concourse-cw"
 
-bin/update-all-the-pipelines
+bin/update-all-the-pipelines $*
