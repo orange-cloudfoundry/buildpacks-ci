@@ -48,7 +48,7 @@ resources:
   - name: cf-release
     type: git
     source:
-      uri: {{cf-release-git-uri}}
+      uri: {{cf-release-git-uri-public}}
   - name: nanny-time-resource
     type: time
     source:
