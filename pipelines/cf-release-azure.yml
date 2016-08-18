@@ -23,7 +23,7 @@ resources:
   - name: cf-release-develop
     type: git
     source:
-      uri: git@github.com:cloudfoundry/cf-release
+      uri: {{cf-release-git-uri}}
       branch: develop
       private_key: {{cf-release-private-key}}
   - name: lite-stemcell
