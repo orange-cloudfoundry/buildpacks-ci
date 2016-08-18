@@ -120,7 +120,7 @@ resources:
   - name: cf-release-rc
     type: git
     source:
-      uri: {{cf-release-git-uri}}
+      uri: {{cf-release-git-uri-public}}
       branch: release-candidate
   - name: cf-release-develop
     type: git

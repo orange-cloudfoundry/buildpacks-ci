@@ -24,7 +24,7 @@ resources:
   - name: cf-release
     type: git
     source:
-      uri: {{cf-release-git-uri}}
+      uri: {{cf-release-git-uri-public}}
       branch: develop
   - name: cf-release-develop
     type: git
