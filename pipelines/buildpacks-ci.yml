@@ -93,7 +93,7 @@ jobs:
       - aggregate:
         - get: ci-master
           trigger: true
-      - task: verify-scripts-dir
+      - task: verify-task-dir
         input_mapping: {buildpacks-ci: ci-master}
         config:
           platform: linux
