@@ -29,7 +29,7 @@ RUN git config --global core.pager cat
 RUN wget -q https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.deb \
   && dpkg -i vagrant_1.8.5_x86_64.deb \
   && rm vagrant_1.8.5_x86_64.deb
-RUN vagrant plugin install vagrant-aws --verbose --plugin-source https://gems.bmonkeys.net
+RUN vagrant plugin install vagrant-aws --verbose
 ENV PATH /usr/bin:$PATH
 RUN echo $PATH && vagrant box add cloudfoundry/bosh-lite --provider aws
 
