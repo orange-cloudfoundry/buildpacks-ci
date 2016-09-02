@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+CURRENT_DIR=$(dirname $0)
+
+#exit 0
+git branch -D orange-current-bkp
+git branch -m orange-current orange-current-bkp
+git checkout -b orange-current origin/develop --
+
+for i in $(cat $CURRENT_DIR/branch-list.txt); do
+    echo "Processing $i #######################################################"
+    git co $i
+    git rebase origin/develop
+    git checkout orange-current
+    git merge $i --no-edit
+done
+
