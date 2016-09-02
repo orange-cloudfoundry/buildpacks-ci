@@ -19,13 +19,13 @@ resources:
   - name: stacks
     type: git
     source:
-      uri: git@github.com:cloudfoundry/stacks.git
+      uri: {{stacks-git-uri}}
       branch: master
       private_key: {{stacks-private-key}}
   - name: stacks-release
     type: git
     source:
-      uri: git@github.com:pivotal-cf-experimental/stacks-release.git
+      uri: {{stacks-release-git-uri}}
       branch: master
       private_key: {{stacks-release-private-key}}
   - name: stack-s3
@@ -66,7 +66,7 @@ resources:
   - name: stacks-cf-deployment
     type: bosh-deployment
     source:
-      target: https://stacks.buildpacks.ci.cf-app.com:25555
+      target: https://stacks.buildpacks.ci.<%= domain_name %>:25555
       username: admin
       password: {{bosh-lite-password}}
       deployment: cf-warden
@@ -74,7 +74,7 @@ resources:
   - name: stacks-diego-deployment
     type: bosh-deployment
     source:
-      target: https://stacks.buildpacks.ci.cf-app.com:25555
+      target: https://stacks.buildpacks.ci.<%= domain_name %>:25555
       username: admin
       password: {{bosh-lite-password}}
       deployment: cf-warden-diego
@@ -82,7 +82,7 @@ resources:
   - name: stacks-rootfs-deployment
     type: bosh-deployment
     source:
-      target: https://stacks.buildpacks.ci.cf-app.com:25555
+      target: https://stacks.buildpacks.ci.<%= domain_name %>:25555
       username: admin
       password: {{bosh-lite-password}}
       deployment: rootfs-smoke-test
@@ -94,7 +94,7 @@ resources:
   - name: cflinuxfs2-rootfs-release
     type: git
     source:
-      uri: git@github.com:cloudfoundry/cflinuxfs2-rootfs-release.git
+      uri: {{cflinuxfs2-rootfs-release-git-uri}}
       branch: master
       private_key: {{cflinuxfs2-rootfs-private-key}}
   - name: diego-release
@@ -120,12 +120,12 @@ resources:
   - name: cf-release-rc
     type: git
     source:
-      uri: {{cf-release-git-uri}}
+      uri: {{cf-release-git-uri-public}}
       branch: release-candidate
   - name: cf-release-develop
     type: git
     source:
-      uri: git@github.com:cloudfoundry/cf-release
+      uri: {{cf-release-git-uri}}
       branch: develop
       private_key: {{cf-release-private-key}}
   - name: lite-stemcell
@@ -214,7 +214,7 @@ jobs:
           BOSH_LITE_SUBNET_ID: {{buildpacks_ci_bosh_lite_subnet_id}}
           BOSH_LITE_DISK_SIZE: 100
           BOSH_GATEWAY_USER: {{buildpacks_ci_bosh_gateway_user}}
-          BOSH_TARGET: stacks.buildpacks.ci.cf-app.com
+          BOSH_TARGET: stacks.buildpacks.ci.<%= domain_name %>
           BOSH_LITE_NAME: stacks.buildpacks.ci
           RUBYGEM_MIRROR: {{rubygem-mirror}}
         attempts: 5
@@ -239,7 +239,7 @@ jobs:
           BOSH_LITE_SUBNET_ID: {{buildpacks_ci_bosh_lite_subnet_id}}
           BOSH_LITE_DISK_SIZE: 100
           BOSH_GATEWAY_USER: {{buildpacks_ci_bosh_gateway_user}}
-          BOSH_TARGET: stacks.buildpacks.ci.cf-app.com
+          BOSH_TARGET: stacks.buildpacks.ci.<%= domain_name %>
           BOSH_LITE_NAME: stacks.buildpacks.ci
           RUBYGEM_MIRROR: {{rubygem-mirror}}
         attempts: 5
@@ -333,7 +333,7 @@ jobs:
             BOSH_LITE_SUBNET_ID: {{buildpacks_ci_bosh_lite_subnet_id}}
             BOSH_LITE_DISK_SIZE: 100
             BOSH_GATEWAY_USER: {{buildpacks_ci_bosh_gateway_user}}
-            BOSH_TARGET: stacks.buildpacks.ci.cf-app.com
+            BOSH_TARGET: stacks.buildpacks.ci.<%= domain_name %>
             BOSH_LITE_NAME: stacks.buildpacks.ci
           privileged: true
         - put: deployments-buildpacks
@@ -356,7 +356,7 @@ jobs:
             BOSH_LITE_SUBNET_ID: {{buildpacks_ci_bosh_lite_subnet_id}}
             BOSH_LITE_DISK_SIZE: 100
             BOSH_GATEWAY_USER: {{buildpacks_ci_bosh_gateway_user}}
-            BOSH_TARGET: stacks.buildpacks.ci.cf-app.com
+            BOSH_TARGET: stacks.buildpacks.ci.<%= domain_name %>
             BOSH_LITE_NAME: stacks.buildpacks.ci
             RUBYGEM_MIRROR: {{rubygem-mirror}}
             DOMAIN_NAME: {{domain-name}}
@@ -414,7 +414,7 @@ jobs:
             BOSH_LITE_SUBNET_ID: {{buildpacks_ci_bosh_lite_subnet_id}}
             BOSH_LITE_DISK_SIZE: 100
             BOSH_GATEWAY_USER: {{buildpacks_ci_bosh_gateway_user}}
-            BOSH_TARGET: stacks.buildpacks.ci.cf-app.com
+            BOSH_TARGET: stacks.buildpacks.ci.<%= domain_name %>
             BOSH_LITE_NAME: stacks.buildpacks.ci
             RUBYGEM_MIRROR: {{rubygem-mirror}}
         on_failure:
@@ -545,7 +545,7 @@ jobs:
             BOSH_LITE_SUBNET_ID: {{buildpacks_ci_bosh_lite_subnet_id}}
             BOSH_LITE_DISK_SIZE: 100
             BOSH_GATEWAY_USER: {{buildpacks_ci_bosh_gateway_user}}
-            BOSH_TARGET: stacks.buildpacks.ci.cf-app.com
+            BOSH_TARGET: stacks.buildpacks.ci.<%= domain_name %>
             BOSH_LITE_NAME: stacks.buildpacks.ci
             DIEGO_DOCKER_ON: true
             DOMAIN_NAME: {{domain-name}}

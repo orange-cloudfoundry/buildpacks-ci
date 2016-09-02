@@ -11,7 +11,7 @@ resources:
   - name: binary-builder
     type: git
     source:
-      uri: {{binary-builder-git-uri}}
+      uri: {{binary-builder-git-uri-public}}
   - name: buildpacks-ci
     type: git
     source:

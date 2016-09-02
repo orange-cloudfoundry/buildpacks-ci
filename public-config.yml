@@ -4,9 +4,10 @@ machete-git-uri: git@github.com:cloudfoundry/machete.git
 
 buildpack-packager-git-uri: git@github.com:cloudfoundry/buildpack-packager.git
 
-binary-builder-git-uri: https://github.com/cloudfoundry/binary-builder.git
+binary-builder-git-uri-public: https://github.com/cloudfoundry/binary-builder.git
 
-cf-release-git-uri: https://github.com/cloudfoundry/cf-release
+cf-release-git-uri-public: https://github.com/cloudfoundry/cf-release
+cf-release-git-uri: git@github.com:cloudfoundry/cf-release
 
 buildpacks-github-org: cloudfoundry
 buildpacks-binaries-s3-bucket: pivotal-buildpacks
@@ -27,3 +28,7 @@ current-timezone: America/New_York
 run-oracle-php-tests: true
 binary-builder-platform: x86_64
 binary-builder-os-name: GNU/Linux
+
+stacks-git-uri: git@github.com:cloudfoundry/stacks.git
+stacks-release-git-uri: git@github.com:pivotal-cf-experimental/stacks-release.git
+cflinuxfs2-rootfs-release-git-uri: git@github.com:cloudfoundry/cflinuxfs2-rootfs-release.git
