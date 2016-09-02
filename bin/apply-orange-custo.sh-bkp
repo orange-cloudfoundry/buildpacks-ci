@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+CURRENT_DIR=$(dirname $0)
+
+git branch -D orange-current-bkp
+git branch -m orange-current orange-current-bkp
+git checkout -b orange-current origin/develop --
+
+for i in $(cat $CURRENT_DIR/branch-list.txt); do
+    echo "Processing $i #######################################################"
+    git co $i
+    git rebase origin/develop
+    git checkout orange-current
+    git merge $i --no-edit
+done
+
+diff $0*
+RESULT=$?
+
+if [ $RESULT -ne 0 ]; then
+    echo "$0 and $0-bkp differ. Backup should be updated !!!"
+    echo "git checkout orange-specific"
+    echo "cp $0 $0-bkp"
+    echo "git commit $0-bkp"
+    exit 1
+fi
+
