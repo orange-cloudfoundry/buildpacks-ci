@@ -3,12 +3,16 @@ resource_types:
     type: docker-image
     source:
       repository: cfbuildpacks/concourse2tracker
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource
 resources:
   - name: ci-master
     type: git
     source:
       uri: {{buildpacks-ci-git-uri}}
-      branch: master
+      branch: {{buildpacks-ci-git-uri-public-branch}}
       private_key: {{buildpacks-ci-private-key}}
   - name: ci-develop
     type: git
@@ -17,6 +21,10 @@ resources:
       branch: {{buildpacks-ci-git-uri-public-develop-branch}}
   - name: concourse2tracker
     type: concourse2tracker
+  - name: failure-alert
+    type: slack-notification
+    source:
+      url: {{concourse-job-failure-notifications-slack-webhook}}
 jobs:
   - name: merge-to-master
     serial: true
@@ -45,3 +53,70 @@ jobs:
           git_path: buildpacks-ci
           project_id: {{cf-buildpacks-public-tracker-id}}
           api_token: {{pivotal-tracker-api-token}}
+  - name: verify-script-usage
+    public: true
+    plan:
+      - aggregate:
+        - get: ci-master
+      - task: verify-scripts-dir
+        input_mapping: {buildpacks-ci: ci-master}
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: {{buildpacks-docker-ci-repo}}
+          inputs:
+            - name: buildpacks-ci
+          params:
+            SCRIPTS_DIR: scripts
+            TASKS_DIR: tasks
+            EXCLUDE_SCRIPT: "scripts/verify-every-script-is-used-in-a-task-or-a-script.sh scripts/terminate-bosh-lite"
+          run:
+            path: bash
+            args:
+               - -c
+               - |
+                 echo $pwd
+                 ls -l buildpacks-ci/s*s/
+                 buildpacks-ci/s*s/verify-every-script-is-used-in-a-task-or-a-script.sh
+        on_failure:
+          put: failure-alert
+          params:
+            text: "$BUILD_JOB_NAME job on Concourse failed! \n Check: $ATC_EXTERNAL_URL/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME"
+            channel: {{concourse-job-failure-notifications-slack-channel}}
+            username: concourse
+            icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
+  - name: verify-task-usage
+    public: true
+    plan:
+      - aggregate:
+        - get: ci-master
+          trigger: true
+      - task: verify-task-dir
+        input_mapping: {buildpacks-ci: ci-master}
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: {{buildpacks-docker-ci-repo}}
+          params:
+            PIPELINE_DIR: pipelines
+            TASKS_DIR: tasks
+            EXCLUDE_TASK:
+          run:
+            path: bash
+            args:
+              - -c
+              - |
+                 $pwd
+                 ls -l
+                 buildpacks-ci/scripts/verify-every-task-is-used-in-pipeline.sh
+        on_failure:
+          put: failure-alert
+          params:
+            text: "$BUILD_JOB_NAME job on Concourse failed! \n Check: $ATC_EXTERNAL_URL/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME"
+            channel: {{concourse-job-failure-notifications-slack-channel}}
+            username: concourse
+            icon_url: http://cl.ly/image/3e1h0H3H2s0P/concourse-logo.png
