@@ -24,30 +24,28 @@
       }
     ]
   },
-  "8.2.24": {
+  "8.2.25": {
     "announcement": true,
-    "tags": [
-      "security"
-    ],
-    "date": "26 Sep 2024",
+    "tags": [],
+    "date": "24 Oct 2024",
     "source": [
       {
-        "filename": "php-8.2.24.tar.gz",
-        "name": "PHP 8.2.24 (tar.gz)",
-        "sha256": "5d26441969279a594e404bb9f2e17b6f74bb10606fe05911e739137673ae6c4c",
-        "date": "26 Sep 2024"
+        "filename": "php-8.2.25.tar.gz",
+        "name": "PHP 8.2.25 (tar.gz)",
+        "sha256": "7fe7ba6e3e66cd0e61cfa95341e6aefc8790030a7867333f54aef5fb78aad18b",
+        "date": "24 Oct 2024"
       },
       {
-        "filename": "php-8.2.24.tar.bz2",
-        "name": "PHP 8.2.24 (tar.bz2)",
-        "sha256": "4cc76ec644eee97d17c92bfe8d0e84714fedf299a538b7dfadc0639dd0dc432f",
-        "date": "26 Sep 2024"
+        "filename": "php-8.2.25.tar.bz2",
+        "name": "PHP 8.2.25 (tar.bz2)",
+        "sha256": "07b41c5e96c60c096510e45f02f818414d11bdd0d5da1b6840ddba2ba7289401",
+        "date": "24 Oct 2024"
       },
       {
-        "filename": "php-8.2.24.tar.xz",
-        "name": "PHP 8.2.24 (tar.xz)",
-        "sha256": "80a5225746a9eb484475b312d4c626c63a88a037d8e56d214f30205e1ba1411a",
-        "date": "26 Sep 2024"
+        "filename": "php-8.2.25.tar.xz",
+        "name": "PHP 8.2.25 (tar.xz)",
+        "sha256": "330b54876ea1d05ade12ee9726167332058bccd58dffa1d4e12117f6b4f616b9",
+        "date": "24 Oct 2024"
       }
     ]
   },
@@ -77,6 +75,36 @@
         "date": "26 Sep 2024"
       }
     ]
+  },
+  "8.2.24": {
+    "announcement": {
+      "English": "/releases/8_2_24.php"
+    },
+    "tags": [
+      "security"
+    ],
+    "date": "26 Sep 2024",
+    "source": [
+      {
+        "filename": "php-8.2.24.tar.gz",
+        "name": "PHP 8.2.24 (tar.gz)",
+        "sha256": "5d26441969279a594e404bb9f2e17b6f74bb10606fe05911e739137673ae6c4c",
+        "date": "26 Sep 2024"
+      },
+      {
+        "filename": "php-8.2.24.tar.bz2",
+        "name": "PHP 8.2.24 (tar.bz2)",
+        "sha256": "4cc76ec644eee97d17c92bfe8d0e84714fedf299a538b7dfadc0639dd0dc432f",
+        "date": "26 Sep 2024"
+      },
+      {
+        "filename": "php-8.2.24.tar.xz",
+        "name": "PHP 8.2.24 (tar.xz)",
+        "sha256": "80a5225746a9eb484475b312d4c626c63a88a037d8e56d214f30205e1ba1411a",
+        "date": "26 Sep 2024"
+      }
+    ],
+    "museum": false
   },
   "8.3.12": {
     "announcement": {
