@@ -2,28 +2,28 @@
   "8": {
     "announcement": true,
     "tags": [],
-    "date": "8 May 2025",
+    "date": "5 Jun 2025",
     "source": [
       {
-        "filename": "php-8.4.7.tar.gz",
-        "name": "PHP 8.4.7 (tar.gz)",
-        "sha256": "fd2be3b9320184e856426e01bd1a428110776ea8e976c3fb6b65808d03fc886a",
-        "date": "8 May 2025"
+        "filename": "php-8.4.8.tar.gz",
+        "name": "PHP 8.4.8 (tar.gz)",
+        "sha256": "26d5ae014925b7dee3a61ec02422795f008fbb3a36f9355edaee2d9d78b89b07",
+        "date": "5 Jun 2025"
       },
       {
-        "filename": "php-8.4.7.tar.bz2",
-        "name": "PHP 8.4.7 (tar.bz2)",
-        "sha256": "6eccb1b06a4dd9cea314dbe70c762d3d4765471cb6ebf925b9da308978bff988",
-        "date": "8 May 2025"
+        "filename": "php-8.4.8.tar.bz2",
+        "name": "PHP 8.4.8 (tar.bz2)",
+        "sha256": "36569c64dd1499e570c436603b641eee7cde4af576af786597d0ee711b3a3a8a",
+        "date": "5 Jun 2025"
       },
       {
-        "filename": "php-8.4.7.tar.xz",
-        "name": "PHP 8.4.7 (tar.xz)",
-        "sha256": "e29f4c23be2816ed005aa3f06bbb8eae0f22cc133863862e893515fc841e65e3",
-        "date": "8 May 2025"
+        "filename": "php-8.4.8.tar.xz",
+        "name": "PHP 8.4.8 (tar.xz)",
+        "sha256": "aa6a4d330b47eacd83e351658ba8c47747a1e4356456219cfb6d75e7838da091",
+        "date": "5 Jun 2025"
       }
     ],
-    "version": "8.4.7",
+    "version": "8.4.8",
     "supported_versions": [
       "8.1",
       "8.2",
