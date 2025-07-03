@@ -78,8 +78,37 @@
       }
     ]
   },
-  "8.1.32": {
+  "8.1.33": {
     "announcement": true,
+    "tags": [
+      "security"
+    ],
+    "date": "3 Jul 2025",
+    "source": [
+      {
+        "filename": "php-8.1.33.tar.gz",
+        "name": "PHP 8.1.33 (tar.gz)",
+        "sha256": "ee33568a0e2be0b722b3f9a88cecc578316b66b25c90cd0a4f3b1a5cdc3cd826",
+        "date": "3 Jul 2025"
+      },
+      {
+        "filename": "php-8.1.33.tar.bz2",
+        "name": "PHP 8.1.33 (tar.bz2)",
+        "sha256": "b6553451841c1a569865d7fdc83024621ee4434cd8fbfeb0a31588ac9c70685f",
+        "date": "3 Jul 2025"
+      },
+      {
+        "filename": "php-8.1.33.tar.xz",
+        "name": "PHP 8.1.33 (tar.xz)",
+        "sha256": "9db83bf4590375562bc1a10b353cccbcf9fcfc56c58b7c8fb814e6865bb928d1",
+        "date": "3 Jul 2025"
+      }
+    ]
+  },
+  "8.1.32": {
+    "announcement": {
+      "English": "/releases/8_1_32.php"
+    },
     "tags": [
       "security"
     ],
@@ -103,7 +132,8 @@
         "sha256": "c582ac682a280bbc69bc2186c21eb7e3313cc73099be61a6bc1d2cd337cbf383",
         "date": "13 Mar 2025"
       }
-    ]
+    ],
+    "museum": false
   },
   "8.2.28": {
     "announcement": {
