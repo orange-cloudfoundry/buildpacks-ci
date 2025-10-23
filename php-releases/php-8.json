@@ -26,28 +26,28 @@
       }
     ]
   },
-  "8.3.26": {
+  "8.3.27": {
     "announcement": true,
     "tags": [],
-    "date": "25 Sep 2025",
+    "date": "23 Oct 2025",
     "source": [
       {
-        "filename": "php-8.3.26.tar.gz",
-        "name": "PHP 8.3.26 (tar.gz)",
-        "sha256": "c96dac9745db9216a299007d144b593f4e4e7d95b4618b2a9591e5e5585200d5",
-        "date": "25 Sep 2025"
+        "filename": "php-8.3.27.tar.gz",
+        "name": "PHP 8.3.27 (tar.gz)",
+        "sha256": "bf189e30f81e11526690b1c82e4fb8b286b607cd7afaf4bf27a39003d8f3246f",
+        "date": "23 Oct 2025"
       },
       {
-        "filename": "php-8.3.26.tar.bz2",
-        "name": "PHP 8.3.26 (tar.bz2)",
-        "sha256": "721b63d5349f131f5097537b3be6ba6801e2d8e6faba1f1f2ea95b4fd62e7525",
-        "date": "25 Sep 2025"
+        "filename": "php-8.3.27.tar.bz2",
+        "name": "PHP 8.3.27 (tar.bz2)",
+        "sha256": "a1dd2b51b437c0a6337e019004778a8ef253db4e9aff7d48d88798ca91b7e2a4",
+        "date": "23 Oct 2025"
       },
       {
-        "filename": "php-8.3.26.tar.xz",
-        "name": "PHP 8.3.26 (tar.xz)",
-        "sha256": "2f522eefa02c400c94610d07f25c4fd4c771f95e4a1f55102332ccb40663cbd2",
-        "date": "25 Sep 2025"
+        "filename": "php-8.3.27.tar.xz",
+        "name": "PHP 8.3.27 (tar.xz)",
+        "sha256": "c15a09a9d199437144ecfef7d712ec4ca5c6820cf34acc24cc8489dd0cee41ba",
+        "date": "23 Oct 2025"
       }
     ]
   },
@@ -104,6 +104,34 @@
         "date": "3 Jul 2025"
       }
     ]
+  },
+  "8.3.26": {
+    "announcement": {
+      "English": "/releases/8_3_26.php"
+    },
+    "tags": [],
+    "date": "25 Sep 2025",
+    "source": [
+      {
+        "filename": "php-8.3.26.tar.gz",
+        "name": "PHP 8.3.26 (tar.gz)",
+        "sha256": "c96dac9745db9216a299007d144b593f4e4e7d95b4618b2a9591e5e5585200d5",
+        "date": "25 Sep 2025"
+      },
+      {
+        "filename": "php-8.3.26.tar.bz2",
+        "name": "PHP 8.3.26 (tar.bz2)",
+        "sha256": "721b63d5349f131f5097537b3be6ba6801e2d8e6faba1f1f2ea95b4fd62e7525",
+        "date": "25 Sep 2025"
+      },
+      {
+        "filename": "php-8.3.26.tar.xz",
+        "name": "PHP 8.3.26 (tar.xz)",
+        "sha256": "2f522eefa02c400c94610d07f25c4fd4c771f95e4a1f55102332ccb40663cbd2",
+        "date": "25 Sep 2025"
+      }
+    ],
+    "museum": false
   },
   "8.4.13": {
     "announcement": {
