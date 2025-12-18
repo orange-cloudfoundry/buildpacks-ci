@@ -1,28 +1,28 @@
 {
-  "8.5.0": {
+  "8.5.1": {
     "announcement": true,
     "tags": [
-      ""
+      "security"
     ],
-    "date": "20 Nov 2025",
+    "date": "18 Dec 2025",
     "source": [
       {
-        "filename": "php-8.5.0.tar.gz",
-        "name": "PHP 8.5.0 (tar.gz)",
-        "sha256": "dc3651369c9b63320dd4ea8e272c6a23f18e50f67c13d10ee368c86961dbd10f",
-        "date": "20 Nov 2025"
+        "filename": "php-8.5.1.tar.gz",
+        "name": "PHP 8.5.1 (tar.gz)",
+        "sha256": "915492958081409a5e3ef99df969bcfa5b33bdf9517bd077991747e17fa2c1b7",
+        "date": "18 Dec 2025"
       },
       {
-        "filename": "php-8.5.0.tar.bz2",
-        "name": "PHP 8.5.0 (tar.bz2)",
-        "sha256": "cd16cb045b34a6cec6a83008e1b335f365c7a832fcc483df82308664c6d021f9",
-        "date": "20 Nov 2025"
+        "filename": "php-8.5.1.tar.bz2",
+        "name": "PHP 8.5.1 (tar.bz2)",
+        "sha256": "55f428c426e7241752ea9afff160bb64c32a9321cbd6d17d1c145b8df8823737",
+        "date": "18 Dec 2025"
       },
       {
-        "filename": "php-8.5.0.tar.xz",
-        "name": "PHP 8.5.0 (tar.xz)",
-        "sha256": "39cb6e4acd679b574d3d3276f148213e935fc25f90403eb84fb1b836a806ef1e",
-        "date": "20 Nov 2025"
+        "filename": "php-8.5.1.tar.xz",
+        "name": "PHP 8.5.1 (tar.xz)",
+        "sha256": "3f5bf99ce81201f526d25e288eddb2cfa111d068950d1e9a869530054ff98815",
+        "date": "18 Dec 2025"
       }
     ]
   },
@@ -131,6 +131,36 @@
         "date": "3 Jul 2025"
       }
     ]
+  },
+  "8.5.0": {
+    "announcement": {
+      "English": "/releases/8_5_0.php"
+    },
+    "tags": [
+      ""
+    ],
+    "date": "20 Nov 2025",
+    "source": [
+      {
+        "filename": "php-8.5.0.tar.gz",
+        "name": "PHP 8.5.0 (tar.gz)",
+        "sha256": "dc3651369c9b63320dd4ea8e272c6a23f18e50f67c13d10ee368c86961dbd10f",
+        "date": "20 Nov 2025"
+      },
+      {
+        "filename": "php-8.5.0.tar.bz2",
+        "name": "PHP 8.5.0 (tar.bz2)",
+        "sha256": "cd16cb045b34a6cec6a83008e1b335f365c7a832fcc483df82308664c6d021f9",
+        "date": "20 Nov 2025"
+      },
+      {
+        "filename": "php-8.5.0.tar.xz",
+        "name": "PHP 8.5.0 (tar.xz)",
+        "sha256": "39cb6e4acd679b574d3d3276f148213e935fc25f90403eb84fb1b836a806ef1e",
+        "date": "20 Nov 2025"
+      }
+    ],
+    "museum": false
   },
   "8.4.14": {
     "announcement": {
