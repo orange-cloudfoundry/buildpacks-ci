@@ -26,30 +26,30 @@
       }
     ]
   },
-  "8.4.15": {
+  "8.4.16": {
     "announcement": true,
     "tags": [
-      ""
+      "security"
     ],
-    "date": "20 Nov 2025",
+    "date": "18 Dec 2025",
     "source": [
       {
-        "filename": "php-8.4.15.tar.gz",
-        "name": "PHP 8.4.15 (tar.gz)",
-        "sha256": "51d23c98073c1e88c98c12b175736a11316cd3d4753f8d060934e53e5a9945c3",
-        "date": "20 Nov 2025"
+        "filename": "php-8.4.16.tar.gz",
+        "name": "PHP 8.4.16 (tar.gz)",
+        "sha256": "8e35d24f148ea7c2a93e9b9bcc329e8bf78b5bb922f3723a727c74c19d184e98",
+        "date": "18 Dec 2025"
       },
       {
-        "filename": "php-8.4.15.tar.bz2",
-        "name": "PHP 8.4.15 (tar.bz2)",
-        "sha256": "b7155bdd498d60d63e4bc320dc224863976d31b5bd9339699726c961255a3197",
-        "date": "20 Nov 2025"
+        "filename": "php-8.4.16.tar.bz2",
+        "name": "PHP 8.4.16 (tar.bz2)",
+        "sha256": "6c48c65eba6a2f7a102925d08772239b1f45110aed2187fdd81b933ed439c692",
+        "date": "18 Dec 2025"
       },
       {
-        "filename": "php-8.4.15.tar.xz",
-        "name": "PHP 8.4.15 (tar.xz)",
-        "sha256": "a060684f614b8344f9b34c334b6ba8db1177555997edb5b1aceab0a4b807da7e",
-        "date": "20 Nov 2025"
+        "filename": "php-8.4.16.tar.xz",
+        "name": "PHP 8.4.16 (tar.xz)",
+        "sha256": "f66f8f48db34e9e29f7bfd6901178e9cf4a1b163e6e497716dfcb8f88bcfae30",
+        "date": "18 Dec 2025"
       }
     ]
   },
@@ -133,6 +133,36 @@
         "date": "3 Jul 2025"
       }
     ]
+  },
+  "8.4.15": {
+    "announcement": {
+      "English": "/releases/8_4_15.php"
+    },
+    "tags": [
+      ""
+    ],
+    "date": "20 Nov 2025",
+    "source": [
+      {
+        "filename": "php-8.4.15.tar.gz",
+        "name": "PHP 8.4.15 (tar.gz)",
+        "sha256": "51d23c98073c1e88c98c12b175736a11316cd3d4753f8d060934e53e5a9945c3",
+        "date": "20 Nov 2025"
+      },
+      {
+        "filename": "php-8.4.15.tar.bz2",
+        "name": "PHP 8.4.15 (tar.bz2)",
+        "sha256": "b7155bdd498d60d63e4bc320dc224863976d31b5bd9339699726c961255a3197",
+        "date": "20 Nov 2025"
+      },
+      {
+        "filename": "php-8.4.15.tar.xz",
+        "name": "PHP 8.4.15 (tar.xz)",
+        "sha256": "a060684f614b8344f9b34c334b6ba8db1177555997edb5b1aceab0a4b807da7e",
+        "date": "20 Nov 2025"
+      }
+    ],
+    "museum": false
   },
   "8.2.29": {
     "announcement": {
