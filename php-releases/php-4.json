@@ -592,7 +592,7 @@
       }
     ],
     "announcement": {
-      "English": "http://news.php.net/php.announce/37"
+      "English": "https://news-web.php.net/php.announce/37"
     },
     "museum": true
   },
@@ -793,7 +793,7 @@
       }
     ],
     "announcement": {
-      "English": "http://news.php.net/php.announce/28"
+      "English": "https://news-web.php.net/php.announce/28"
     },
     "museum": true
   },
@@ -820,8 +820,8 @@
       }
     ],
     "announcement": {
-      "English": "http://news.php.net/php.announce/26",
-      "English (pl1)": "http://news.php.net/php.announce/27"
+      "English": "https://news-web.php.net/php.announce/26",
+      "English (pl1)": "https://news-web.php.net/php.announce/27"
     },
     "museum": true
   },
@@ -840,7 +840,7 @@
       }
     ],
     "announcement": {
-      "English": "http://news.php.net/php.announce/24"
+      "English": "https://news-web.php.net/php.announce/24"
     },
     "museum": true
   },
@@ -867,7 +867,7 @@
       }
     ],
     "announcement": {
-      "English": "http://news.php.net/php.announce/23"
+      "English": "https://news-web.php.net/php.announce/23"
     },
     "museum": true
   },
@@ -886,7 +886,7 @@
       }
     ],
     "announcement": {
-      "English": "http://news.php.net/php.announce/22"
+      "English": "https://news-web.php.net/php.announce/22"
     },
     "museum": true
   }
